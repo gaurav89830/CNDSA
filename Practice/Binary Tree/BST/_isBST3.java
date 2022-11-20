@@ -7,8 +7,8 @@ public class _isBST3 {
         if (root == null)
             return true;
 
-        // max ≠ Left max
-        // min ≠ right min
+        // max not equals Left max
+        // min  not equals right min
         // this is different logic,
 
         if (root.data > max || root.data < min) {
