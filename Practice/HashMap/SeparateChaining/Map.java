@@ -4,7 +4,7 @@ package SeparateChaining;
 import java.util.ArrayList;
 // import java.util.Map;
 
-import javax.management.ValueExp;
+// import javax.management.ValueExp;
 
 public class Map<K, V> {
     ArrayList<MapNode<K, V>> buckets;
@@ -37,6 +37,7 @@ public class Map<K, V> {
         while (head != null) {
             if (head.key.equals(key)) {
                 head.value = value;
+                return;
             }
             head = head.next;
         }
@@ -44,9 +45,49 @@ public class Map<K, V> {
         // now create a new node and add it to arraylist ( shift other after new node )
         head = buckets.get(bucketIndex);
         MapNode<K, V> newNode = new MapNode<>(key, value);
+        size++;
         newNode.next = head; // now head is attached
         // now add newNode to the ArrayList
         buckets.add(bucketIndex, newNode);
+
+        // to reHash
+
+        double loadFactor = (1.0 * size) / numBuckets;
+
+        if (loadFactor > 0.7) {
+            System.out.println("Rehashing...");
+            reHash();
+        }
+    }
+
+    private void reHash() {
+        ArrayList<MapNode<K, V>> temp = buckets;
+        buckets = new ArrayList<>();
+        for (int i = 0; i < 2 * numBuckets; i++) {
+            buckets.add(null);
+        }
+        size = 0;
+        numBuckets = 2 * numBuckets;
+
+        // now interate over the old and add new elements to the buckets
+
+        for (int i = 0; i < temp.size(); i++) {
+            MapNode<K, V> head = temp.get(i);
+
+            while (head != null) {
+                K key = head.key;
+                V value = head.value;
+
+                insert(key, value); // yeh buckets mein directly insert krega na isliye
+
+                head = head.next;
+            }
+        }
+
+    }
+
+    public double loadFactor() {
+        return (1.0 * size) / numBuckets;
     }
 
     public int size() {
@@ -71,6 +112,7 @@ public class Map<K, V> {
         MapNode<K, V> prevNode = null;
         while (head != null) {
             if (head.key.equals(key)) {
+                size--;
                 if (prevNode == null) {
                     // if the head it the key required. then the prevNode is null
                     buckets.set(bucketIndex, head.next);
