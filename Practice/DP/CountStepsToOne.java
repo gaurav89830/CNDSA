@@ -41,14 +41,14 @@ public class CountStepsToOne {
             return arr[n];
         }
 
-        int a = countMinStepsToOne(n - 1);
+        int a = countMinStepsToOneM_helper(arr ,n - 1); 
         int b = Integer.MAX_VALUE;
         int c = Integer.MAX_VALUE;
 
         if (n % 2.0 == 0)
-            b = countMinStepsToOne(n / 2);
+            b = countMinStepsToOneM_helper(arr ,n / 2);
         if (n % 3.0 == 0)
-            c = countMinStepsToOne(n / 3);
+            c = countMinStepsToOneM_helper(arr ,n / 3);
 
         arr[n] = Math.min(Math.min(a, b), c) + 1;
         return arr[n];

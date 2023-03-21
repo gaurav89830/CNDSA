@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 class TrieNode {
     char data;
@@ -123,5 +124,19 @@ class Trie {
     // }
     public int countWords() {
         return wordCount;
+    }
+
+    /// for questions
+
+    // pattern matching - add all substring and then search
+    public boolean patternMatching(ArrayList<String> vect, String pattern) {
+        for (int i = 0; i < vect.size(); i++) {
+            String word = vect.get(i);
+            for (int j = 0; j < word.length(); j++) {
+                add(word.substring(j));
+            }
+        }
+
+        return search(pattern);
     }
 }
