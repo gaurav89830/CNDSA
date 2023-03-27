@@ -80,6 +80,9 @@ public class Main {
         printBT(root.right);
     }
 
+
+
+
     public static void printLevelWise(BinaryTreeNode<Integer> root) {
 
         Queue<BinaryTreeNode<Integer>> pendingNodes = new LinkedList<>();
@@ -106,6 +109,11 @@ public class Main {
             System.out.println(print);
         }
     }
+
+
+
+
+    
 
     public static int countNodes(BinaryTreeNode<Integer> root) {
         if (root == null)

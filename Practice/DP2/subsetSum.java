@@ -29,7 +29,7 @@ public class subsetSum {
         for (int i = 1; i <= row; i++) {
             for (int j = 1; j <= col; j++) {
 
-                if (ar[i - 1] > j) {// number bda hai to select
+                if (ar[i - 1] > j) {// number bada hai to select
                     arr[i][j] = arr[i - 1][j];
                 } else {
                     boolean ans1 = arr[i - 1][j];

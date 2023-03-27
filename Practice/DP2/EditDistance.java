@@ -78,7 +78,7 @@ public class EditDistance {
 
         for (int i = 1; i <= m; i++) {
             for (int j = 1; j <= n; j++) {
-                if (s1.charAt(m - i) == s2.charAt(n - j)) {
+                if (s1.charAt(m - i) == s2.charAt(n - j)) { // imp step
                     arr[i][j] = arr[i - 1][j - 1];
                 } else {
                     arr[i][j] = 1 + Math.min(Math.min(arr[i - 1][j], arr[i][j - 1]), arr[i - 1][j - 1]);
