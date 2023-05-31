@@ -45,7 +45,6 @@ public class reverseLL {
         // func call se phele hi tail ko save krle 1 2 3 4 mein se 2 hi toh tail hai ( 1 , 4 3 2).
 
         Node<Integer> tail = head.next;
-
         Node<Integer> smallAns = reverseLLBestnEasy(head.next);
 
         tail.next = head;
@@ -83,22 +82,22 @@ public class reverseLL {
     }
 
     // this is of n^2 complexity time
-    public static Node<Integer> reverseLinkedListRec(Node<Integer> head) {
-        if (head == null || head.next == null)
-            return head;
+    // public static Node<Integer> reverseLinkedListRec(Node<Integer> head) {
+    //     if (head == null || head.next == null)
+    //         return head;
 
-        Node<Integer> newHead = reverseLinkedListRec(head.next);
-        Node<Integer> temp = newHead;
+    //     Node<Integer> newHead = reverseLinkedListRec(head.next);
+    //     Node<Integer> temp = newHead;
 
-        while (temp.next != null)
-            temp = temp.next;
+    //     while (temp.next != null)
+    //         temp = temp.next;
 
-        temp.next = head;
+    //     temp.next = head;
 
-        head.next = null;
+    //     head.next = null;
 
-        return newHead;
-    }
+    //     return newHead;
+    // }
 
     public static void main(String[] args) {
         {

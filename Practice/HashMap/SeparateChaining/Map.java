@@ -23,6 +23,7 @@ public class Map<K, V> {
         // 2 steps
         int hashCode;
         hashCode = hashCode(); // implemented by Object Class
+        // ⚠️ this should be key.hashcode(); ??
         return hashCode % numBuckets;
 
     }
