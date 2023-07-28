@@ -53,7 +53,7 @@ public class Map<K, V> {
 
         // to reHash
 
-        double loadFactor = (1.0 * size) / numBuckets;
+        double loadFactor = loadFactor();
 
         if (loadFactor > 0.7) {
             System.out.println("Rehashing...");
@@ -115,7 +115,7 @@ public class Map<K, V> {
             if (head.key.equals(key)) {
                 size--;
                 if (prevNode == null) {
-                    // if the head it the key required. then the prevNode is null
+                    // if the head is the key required. then the prevNode is null
                     buckets.set(bucketIndex, head.next);
                 } else {
                     prevNode.next = head.next;// now head is out of the LL
@@ -129,3 +129,4 @@ public class Map<K, V> {
     }
 
 }
+
